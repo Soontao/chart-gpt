@@ -28,11 +28,10 @@ WORKDIR /app
 COPY package*.json yarn.lock ./
 
 # Copy the built app from the previous stage
-COPY --from=build /app/.next/standalone .
-COPY --from=build /app/.next/static ./.next
+COPY --from=build /app/.next ./.next
 
 # Expose port 3000
 EXPOSE 3000
 
 # Start the Next.js app
-CMD ["node", "server.js"]
+CMD ["node", ".next/standalone/server.js"]
