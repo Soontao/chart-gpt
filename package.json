@@ -17,7 +17,6 @@
     "@heroicons/react": "^2.0.17",
     "@nivo/core": "^0.81.0",
     "@nivo/line": "^0.81.0",
-    "@supabase/supabase-js": "^2.20.0",
     "@tailwindcss/forms": "^0.5.3",
     "@tldraw/tldraw": "^1.29.2",
     "@tremor/react": "^2.4.0",
@@ -57,7 +56,6 @@
     "recharts": "^2.5.0",
     "redis": "^4.6.5",
     "styled-components": "^5.3.9",
-    "supabase": "^1.50.4",
     "svgo": "^3.0.2",
     "util": "^0.12.5",
     "victory": "^36.6.8"
