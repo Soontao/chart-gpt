@@ -25,9 +25,6 @@ WORKDIR /app
 # Copy package.json and yarn.lock to the container
 COPY package*.json yarn.lock ./
 
-# Install production dependencies only
-RUN yarn install --production=true
-
 # Copy the built app from the previous stage
 COPY --from=build /app/.next ./.next
 
@@ -35,4 +32,4 @@ COPY --from=build /app/.next ./.next
 EXPOSE 3000
 
 # Start the Next.js app
-CMD ["yarn", "start"]
+CMD ["npx", "next", "start"]
