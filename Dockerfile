@@ -29,7 +29,7 @@ COPY package*.json yarn.lock ./
 
 # Copy the built app from the previous stage
 COPY --from=build /app/.next/standalone .
-COPY --from=build /app/public .
+COPY --from=build /app/.next/static ./.next
 
 # Expose port 3000
 EXPOSE 3000
