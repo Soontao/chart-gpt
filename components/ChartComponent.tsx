@@ -144,6 +144,7 @@ const INDEX_NAME = 'name'
 //TODO: dynamic keys instead of default value
 export const Chart: React.FC<ChartProps> = ({ data, chartType }) => {
 	const color = data.length > 0 ? data[0]["color"] : mixColors(colors);
+	// TODO: multi categories need to concern about colors also
 	const categories = Object.keys(data?.[0]).filter(cat => cat !== INDEX_NAME)
 	const value = data.length > 0 ? Object.keys(data[0])[1] : "value";
 	const renderChart = () => {
@@ -155,7 +156,7 @@ export const Chart: React.FC<ChartProps> = ({ data, chartType }) => {
 						className='h-[300px]'
 						data={data}
 						index={INDEX_NAME}
-						categories={categories}
+						categories={[value]}
 						colors={["indigo", "cyan"]}
 					/>
 				);
@@ -165,7 +166,7 @@ export const Chart: React.FC<ChartProps> = ({ data, chartType }) => {
 						className='h-[300px]'
 						data={data}
 						index={INDEX_NAME}
-						categories={categories}
+						categories={[value]}
 						colors={["blue"]}
 					/>
 				);
@@ -175,7 +176,7 @@ export const Chart: React.FC<ChartProps> = ({ data, chartType }) => {
 						className='h-[300px]'
 						data={data}
 						index={INDEX_NAME}
-						categories={categories}
+						categories={[value]}
 						colors={["blue"]}
 					/>
 				);
