@@ -13,6 +13,8 @@ RUN yarn install
 # Copy the rest of the application code to the container
 COPY . .
 
+ENV NEXT_TELEMETRY_DISABLED=false
+
 # Build the Next.js app
 RUN yarn build
 
@@ -25,13 +27,11 @@ WORKDIR /app
 # Copy package.json and yarn.lock to the container
 COPY package*.json yarn.lock ./
 
-RUN yarn --production
-
 # Copy the built app from the previous stage
-COPY --from=build /app/.next ./.next
+COPY --from=build /app/.next/standalone .
 
 # Expose port 3000
 EXPOSE 3000
 
 # Start the Next.js app
-CMD ["npx", "next", "start"]
+CMD ["node", "server.js"]
