@@ -25,6 +25,8 @@ WORKDIR /app
 # Copy package.json and yarn.lock to the container
 COPY package*.json yarn.lock ./
 
+RUN yarn --production
+
 # Copy the built app from the previous stage
 COPY --from=build /app/.next ./.next
 
