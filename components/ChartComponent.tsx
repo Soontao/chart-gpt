@@ -139,9 +139,12 @@ function mixColors(colors: string[], randomFactor = 0.1): string {
 	return hexColor;
 }
 
+const INDEX_NAME = 'name'
+
 //TODO: dynamic keys instead of default value
 export const Chart: React.FC<ChartProps> = ({ data, chartType }) => {
 	const color = data.length > 0 ? data[0]["color"] : mixColors(colors);
+	const categories = Object.keys(data?.[0]).filter(cat => cat !== INDEX_NAME)
 	const value = data.length > 0 ? Object.keys(data[0])[1] : "value";
 	const renderChart = () => {
 		chartType = chartType.toLowerCase();
@@ -151,8 +154,8 @@ export const Chart: React.FC<ChartProps> = ({ data, chartType }) => {
 					<AreaChart
 						className='h-[300px]'
 						data={data}
-						index='name'
-						categories={[value]}
+						index={INDEX_NAME}
+						categories={categories}
 						colors={["indigo", "cyan"]}
 					/>
 				);
@@ -161,8 +164,8 @@ export const Chart: React.FC<ChartProps> = ({ data, chartType }) => {
 					<BarChart
 						className='h-[300px]'
 						data={data}
-						index='name'
-						categories={[value]}
+						index={INDEX_NAME}
+						categories={categories}
 						colors={["blue"]}
 					/>
 				);
@@ -171,8 +174,8 @@ export const Chart: React.FC<ChartProps> = ({ data, chartType }) => {
 					<LineChart
 						className='h-[300px]'
 						data={data}
-						index='name'
-						categories={[value]}
+						index={INDEX_NAME}
+						categories={categories}
 						colors={["blue"]}
 					/>
 				);
